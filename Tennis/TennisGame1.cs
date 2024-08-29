@@ -16,9 +16,9 @@ namespace Tennis
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
-                _player1Score ++;
+                _player1Score++;
             else
-                _player2Score ++;
+                _player2Score++;
         }
 
         public string GetScore()
@@ -29,38 +29,43 @@ namespace Tennis
             {
                 return DrawResult();
             }
-            
+
             if (_player1Score >= 4 || _player2Score >= 4)
             {
-                var minusResult = _player1Score - _player2Score;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
+                return AdvantageOrWinResult();
             }
-            else
+
+            for (var i = 1; i < 3; i++)
             {
-                for (var i = 1; i < 3; i++)
+                if (i == 1) tempScore = _player1Score;
+                else { score += "-"; tempScore = _player2Score; }
+                switch (tempScore)
                 {
-                    if (i == 1) tempScore = _player1Score;
-                    else { score += "-"; tempScore = _player2Score; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
+                    case 0:
+                        score += "Love";
+                        break;
+                    case 1:
+                        score += "Fifteen";
+                        break;
+                    case 2:
+                        score += "Thirty";
+                        break;
+                    case 3:
+                        score += "Forty";
+                        break;
                 }
             }
+            return score;
+        }
+
+        private string AdvantageOrWinResult()
+        {
+            string score;
+            var minusResult = _player1Score - _player2Score;
+            if (minusResult == 1) score = "Advantage player1";
+            else if (minusResult == -1) score = "Advantage player2";
+            else if (minusResult >= 2) score = "Win for player1";
+            else score = "Win for player2";
             return score;
         }
 
