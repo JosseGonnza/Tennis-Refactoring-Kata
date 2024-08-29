@@ -27,15 +27,10 @@ namespace Tennis
             var tempScore = 0;
             if (IsDraw())
             {
-                score = _player1Score switch
-                {
-                    0 => "Love-All",
-                    1 => "Fifteen-All",
-                    2 => "Thirty-All",
-                    _ => "Deuce",
-                };
+                return DrawResult();
             }
-            else if (_player1Score >= 4 || _player2Score >= 4)
+            
+            if (_player1Score >= 4 || _player2Score >= 4)
             {
                 var minusResult = _player1Score - _player2Score;
                 if (minusResult == 1) score = "Advantage player1";
@@ -67,6 +62,17 @@ namespace Tennis
                 }
             }
             return score;
+        }
+
+        private string DrawResult()
+        {
+            return _player1Score switch
+            {
+                0 => "Love-All",
+                1 => "Fifteen-All",
+                2 => "Thirty-All",
+                _ => "Deuce",
+            };
         }
 
         private bool IsDraw()
