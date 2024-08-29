@@ -37,24 +37,38 @@ namespace Tennis
 
             for (var i = 1; i < 3; i++)
             {
-                if (i == 1) tempScore = _player1Score;
-                else { score += "-"; tempScore = _player2Score; }
-                switch (tempScore)
+                if (i == 1)
                 {
-                    case 0:
-                        score += "Love";
-                        break;
-                    case 1:
-                        score += "Fifteen";
-                        break;
-                    case 2:
-                        score += "Thirty";
-                        break;
-                    case 3:
-                        score += "Forty";
-                        break;
+                    tempScore = _player1Score;
                 }
+                else
+                {
+                    score += "-"; tempScore = _player2Score;
+                }
+
+                score = GetScoreAsString(score, tempScore);
             }
+            return score;
+        }
+
+        private static string GetScoreAsString(string score, int tempScore)
+        {
+            switch (tempScore)
+            {
+                case 0:
+                    score += "Love";
+                    break;
+                case 1:
+                    score += "Fifteen";
+                    break;
+                case 2:
+                    score += "Thirty";
+                    break;
+                case 3:
+                    score += "Forty";
+                    break;
+            }
+
             return score;
         }
 
