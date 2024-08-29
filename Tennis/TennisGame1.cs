@@ -25,24 +25,15 @@ namespace Tennis
         {
             string score = "";
             var tempScore = 0;
-            if (_player1Score == _player2Score)
+            if (IsDraw())
             {
-                switch (_player1Score)
+                score = _player1Score switch
                 {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
-
-                }
+                    0 => "Love-All",
+                    1 => "Fifteen-All",
+                    2 => "Thirty-All",
+                    _ => "Deuce",
+                };
             }
             else if (_player1Score >= 4 || _player2Score >= 4)
             {
@@ -76,6 +67,11 @@ namespace Tennis
                 }
             }
             return score;
+        }
+
+        private bool IsDraw()
+        {
+            return _player1Score == _player2Score;
         }
     }
 }
