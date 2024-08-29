@@ -35,9 +35,12 @@ namespace Tennis
                 return AdvantageOrWinResult();
             }
 
-            score = GetScoreAsString(score, _player1Score) + "-" + GetScoreAsString(score, _player2Score);
+            return ResultPerPoint(score);
+        }
 
-            return score;
+        private string ResultPerPoint(string score)
+        {
+            return GetScoreAsString(score, _player1Score) + "-" + GetScoreAsString(score, _player2Score);
         }
 
         private static string GetScoreAsString(string score, int tempScore)
