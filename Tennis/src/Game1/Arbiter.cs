@@ -5,23 +5,23 @@ namespace Tennis.src.Game1;
 class Arbiter
 {
     // Utilizamos esta clase como factoría
-    public static Result DeterminateResult(int player1Score, int player2Score)
+    public static Result DeterminateResult(Player player1, Player player2)
     {
-        if (player1Score == player2Score)
+        if (player1.GetScore() == player2.GetScore())
         {
-            return new DrawResult(player1Score, player2Score);
+            return new DrawResult(player1.GetScore(), player2.GetScore());
         }
-        else if (EitherPlayerHasAdvantage(player1Score, player2Score) && SomeIsAheadByOne(player1Score, player2Score))
+        else if (EitherPlayerHasAdvantage(player1.GetScore(), player2.GetScore()) && SomeIsAheadByOne(player1.GetScore(), player2.GetScore()))
         {
-            return new AdvantageResult(player1Score, player2Score);
+            return new AdvantageResult(player1.GetScore(), player2.GetScore());
         }
-        else if (EitherPlayerHasAdvantage(player1Score, player2Score))
+        else if (EitherPlayerHasAdvantage(player1.GetScore(), player2.GetScore()))
         {
-            return new WinResult(player1Score, player2Score);
+            return new WinResult(player1.GetScore(), player2.GetScore());
         }
         else
         {
-            return new OngoingResult(player1Score, player2Score);
+            return new OngoingResult(player1.GetScore(), player2.GetScore());
         }
     }
 

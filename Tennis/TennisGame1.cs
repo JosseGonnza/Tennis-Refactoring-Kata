@@ -1,30 +1,36 @@
+using System;
 using Tennis.src.Game1;
 
 namespace Tennis;
 
 public class TennisGame1 : ITennisGame
 {
-    private int _player1Score = 0;
-    private int _player2Score = 0;
+    private Player Player1;
+    private Player Player2;
     private string Player1Name;
     private string Player2Name;
 
     public TennisGame1(string player1Name, string player2Name)
     {
-        Player1Name = player1Name;
-        Player2Name = player2Name;
+        Player1 = new Player(player1Name);
+        Player2 = new Player(player2Name);
     }
 
     public void WonPoint(string playerName)
     {
-        if (playerName == "player1")
-            _player1Score++;
+        if (playerName.Equals("player1"))
+        {
+            Player1.AddPoint();
+        }
         else
-            _player2Score++;
+        {
+            Player2.AddPoint();
+        }
+
     }
 
     public string GetScore()
     {
-        return Arbiter.DeterminateResult(_player1Score, _player2Score).GetScoreAsText();
+        return Arbiter.DeterminateResult(Player1, Player2).GetScoreAsText();
     }
 }
