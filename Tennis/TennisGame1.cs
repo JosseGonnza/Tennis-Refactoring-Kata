@@ -35,33 +35,9 @@ namespace Tennis
                 return AdvantageOrWinResult();
             }
 
-            var i = 1;
-            {
-                if (i == 1)
-                {
-                    tempScore = _player1Score;
-                }
-                else
-                {
-                    score += "-"; tempScore = _player2Score;
-                }
-
-                score = GetScoreAsString(score, tempScore);
-            }
-
-            i = 2;
-            {
-                if (i == 1)
-                {
-                    tempScore = _player1Score;
-                }
-                else
-                {
-                    score += "-"; tempScore = _player2Score;
-                }
-
-                score = GetScoreAsString(score, tempScore);
-            }
+            score = GetScoreAsString(score, _player1Score);
+            score += "-";
+            score = GetScoreAsString(score, _player2Score);
 
             return score;
         }
