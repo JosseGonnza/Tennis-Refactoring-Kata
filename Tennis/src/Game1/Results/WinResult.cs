@@ -1,4 +1,6 @@
-﻿namespace Tennis.src.Game1;
+﻿using Tennis.src.Game1.Models;
+
+namespace Tennis.src.Game1.Results;
 
 public class WinResult : Result
 {
