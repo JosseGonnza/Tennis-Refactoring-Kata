@@ -1,4 +1,6 @@
-﻿namespace Tennis.src.Game1;
+﻿using System;
+
+namespace Tennis.src.Game1;
 
 public class Player
 {
@@ -11,11 +13,6 @@ public class Player
         Score = 0;
     }
 
-    public bool IsTiedWith(Player otherPlayer)
-    {
-        return Score == otherPlayer.Score;
-    }
-
     public void AddPoint()
     {
         Score++;
@@ -24,5 +21,15 @@ public class Player
     public int GetScore()
     {
         return Score;
+    }
+
+    public bool IsTiedWith(Player otherPlayer)
+    {
+        return Score == otherPlayer.Score;
+    }
+
+    public bool IsAheadByOnePoint(Player otherPlayer)
+    {
+        return Math.Abs(Score - otherPlayer.Score) == 1;
     }
 }

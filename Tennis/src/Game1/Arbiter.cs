@@ -11,7 +11,7 @@ class Arbiter
         {
             return new DrawResult(player1.GetScore(), player2.GetScore());
         }
-        else if (EitherPlayerHasAdvantage(player1.GetScore(), player2.GetScore()) && SomeIsAheadByOne(player1.GetScore(), player2.GetScore()))
+        else if (EitherPlayerHasAdvantage(player1.GetScore(), player2.GetScore()) && player1.IsAheadByOnePoint(player2))
         {
             return new AdvantageResult(player1.GetScore(), player2.GetScore());
         }
@@ -23,11 +23,6 @@ class Arbiter
         {
             return new OngoingResult(player1.GetScore(), player2.GetScore());
         }
-    }
-
-    private static bool SomeIsAheadByOne(int player1Score, int player2Score)
-    {
-        return Math.Abs(player1Score - player2Score) == 1;
     }
 
     private static bool EitherPlayerHasAdvantage(int player1Score, int player2Score)
