@@ -7,7 +7,7 @@ class Arbiter
     // Utilizamos esta clase como factoría
     public static Result DeterminateResult(Player player1, Player player2)
     {
-        if (player1.GetScore() == player2.GetScore())
+        if (player1.IsTiedWith(player2))
         {
             return new DrawResult(player1.GetScore(), player2.GetScore());
         }

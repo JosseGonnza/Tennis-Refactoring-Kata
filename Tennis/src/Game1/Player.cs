@@ -1,4 +1,4 @@
-﻿namespace Tennis;
+﻿namespace Tennis.src.Game1;
 
 public class Player
 {
@@ -9,6 +9,11 @@ public class Player
     {
         Name = name;
         Score = 0;
+    }
+
+    public bool IsTiedWith(Player otherPlayer)
+    {
+        return Score == otherPlayer.Score;
     }
 
     public void AddPoint()
