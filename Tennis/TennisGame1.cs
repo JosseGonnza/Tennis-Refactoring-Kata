@@ -35,7 +35,7 @@ namespace Tennis
                 return AdvantageOrWinResult();
             }
 
-            for (var i = 1; i < 3; i++)
+            var i = 1;
             {
                 if (i == 1)
                 {
@@ -48,6 +48,21 @@ namespace Tennis
 
                 score = GetScoreAsString(score, tempScore);
             }
+
+            i = 2;
+            {
+                if (i == 1)
+                {
+                    tempScore = _player1Score;
+                }
+                else
+                {
+                    score += "-"; tempScore = _player2Score;
+                }
+
+                score = GetScoreAsString(score, tempScore);
+            }
+
             return score;
         }
 
