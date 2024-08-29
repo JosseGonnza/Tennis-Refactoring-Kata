@@ -40,28 +40,24 @@ namespace Tennis
 
         private string ResultPerPoint(string score)
         {
-            return GetScoreAsString(score, _player1Score) + "-" + GetScoreAsString(score, _player2Score);
+            return GetScoreAsString(_player1Score) + "-" + GetScoreAsString(_player2Score);
         }
 
-        private static string GetScoreAsString(string score, int tempScore)
+        private static string GetScoreAsString(int score)
         {
-            switch (tempScore)
+            switch (score)
             {
                 case 0:
-                    score += "Love";
-                    break;
+                    return "Love";
                 case 1:
-                    score += "Fifteen";
-                    break;
+                    return "Fifteen";
                 case 2:
-                    score += "Thirty";
-                    break;
+                    return "Thirty";
                 case 3:
-                    score += "Forty";
-                    break;
+                    return "Forty";
             }
 
-            return score;
+            return score.ToString();
         }
 
         private string AdvantageOrWinResult()
