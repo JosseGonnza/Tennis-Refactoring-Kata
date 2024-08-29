@@ -32,7 +32,7 @@ public class TennisGame1 : ITennisGame
 
         if (_player1Score >= 4 || _player2Score >= 4)
         {
-            return AdvantageOrWinResult();
+            return DetermineAdvantageOrWinResult();
         }
 
         return ResultPerPoint(score);
@@ -60,15 +60,9 @@ public class TennisGame1 : ITennisGame
         return score.ToString();
     }
 
-    private string AdvantageOrWinResult()
+    private string DetermineAdvantageOrWinResult()
     {
-        string score;
-        var minusResult = _player1Score - _player2Score;
-        if (minusResult == 1) score = "Advantage player1";
-        else if (minusResult == -1) score = "Advantage player2";
-        else if (minusResult >= 2) score = "Win for player1";
-        else score = "Win for player2";
-        return score;
+        return new AdvantageOrWinResult(_player1Score, _player2Score).GetScoreAsText();
     }
 
     private string DeterminateDrawResult()
@@ -107,5 +101,28 @@ public class DrawResult : Result
             2 => "Thirty-All",
             _ => "Deuce",
         };
+    }
+}
+
+public class AdvantageOrWinResult : Result
+{
+    private int Player1Score;
+    private int Player2Score;
+
+    public AdvantageOrWinResult(int player1Score, int player2Score)
+    {
+        Player1Score = player1Score;
+        Player2Score = player2Score;
+    }
+
+    public string GetScoreAsText()
+    {
+        string score;
+        var minusResult = Player1Score - Player2Score;
+        if (minusResult == 1) score = "Advantage player1";
+        else if (minusResult == -1) score = "Advantage player2";
+        else if (minusResult >= 2) score = "Win for player1";
+        else score = "Win for player2";
+        return score;
     }
 }
