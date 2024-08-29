@@ -35,9 +35,7 @@ namespace Tennis
                 return AdvantageOrWinResult();
             }
 
-            score = GetScoreAsString(score, _player1Score);
-            score += "-";
-            score = GetScoreAsString(score, _player2Score);
+            score = GetScoreAsString(score, _player1Score) + "-" + GetScoreAsString(score, _player2Score);
 
             return score;
         }
