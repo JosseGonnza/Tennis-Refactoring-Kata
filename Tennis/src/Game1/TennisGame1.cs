@@ -1,7 +1,6 @@
 using System;
-using Tennis.src.Game1;
 
-namespace Tennis;
+namespace Tennis.src.Game1;
 
 public class TennisGame1 : ITennisGame
 {

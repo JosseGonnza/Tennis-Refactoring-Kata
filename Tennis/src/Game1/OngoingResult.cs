@@ -2,18 +2,18 @@
 
 public class OngoingResult : Result
 {
-    private int Player1Score;
-    private int Player2Score;
+    private Player Player1;
+    private Player Player2;
 
-    public OngoingResult(int player1Score, int player2Score)
+    public OngoingResult(Player player1, Player player2)
     {
-        Player1Score = player1Score;
-        Player2Score = player2Score;
+        Player1 = player1;
+        Player2 = player2;
     }
 
     public string GetScoreAsText()
     {
-        return GetScoreAsString(Player1Score) + "-" + GetScoreAsString(Player2Score);
+        return GetScoreAsString(Player1.GetScore()) + "-" + GetScoreAsString(Player2.GetScore());
     }
 
     public static string GetScoreAsString(int score)

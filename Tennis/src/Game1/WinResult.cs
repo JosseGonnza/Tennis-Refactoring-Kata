@@ -2,17 +2,17 @@
 
 public class WinResult : Result
 {
-    private int Player1Score;
-    private int Player2Score;
+    private Player Player1;
+    private Player Player2;
 
-    public WinResult(int player1Score, int player2Score)
+    public WinResult(Player player1, Player player2)
     {
-        Player1Score = player1Score;
-        Player2Score = player2Score;
+        Player1 = player1;
+        Player2 = player2;
     }
 
     public string GetScoreAsText()
     {
-        return Player1Score > Player2Score ? "Win for player1" : "Win for player2";
+        return Player1.GetScore() > Player2.GetScore() ? "Win for player1" : "Win for player2";
     }
 }

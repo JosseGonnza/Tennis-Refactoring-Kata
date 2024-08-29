@@ -2,17 +2,17 @@
 
 public class AdvantageResult : Result
 {
-    private int Player1Score;
-    private int Player2Score;
+    private Player Player1;
+    private Player Player2;
 
-    public AdvantageResult(int player1Score, int player2Score)
+    public AdvantageResult(Player player1, Player player2)
     {
-        Player1Score = player1Score;
-        Player2Score = player2Score;
+        Player1 = player1;
+        Player2 = player2;
     }
 
     public string GetScoreAsText()
     {
-        return Player1Score > Player2Score ? "Advantage player1" : "Advantage player2";
+        return Player1.GetScore() > Player2.GetScore() ? "Advantage player1" : "Advantage player2";
     }
 }

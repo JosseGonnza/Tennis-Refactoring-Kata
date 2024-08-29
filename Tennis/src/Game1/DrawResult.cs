@@ -2,18 +2,18 @@
 
 public class DrawResult : Result
 {
-    private int Player1Score;
-    private int Player2Score;
+    private Player Player1;
+    private Player Player2;
 
-    public DrawResult(int player1Score, int player2Score)
+    public DrawResult(Player player1, Player player2)
     {
-        Player1Score = player1Score;
-        Player2Score = player2Score;
+        Player1 = player1;
+        Player2 = player2;
     }
 
     public string GetScoreAsText()
     {
-        return Player1Score switch
+        return Player1.GetScore() switch
         {
             0 => "Love-All",
             1 => "Fifteen-All",
