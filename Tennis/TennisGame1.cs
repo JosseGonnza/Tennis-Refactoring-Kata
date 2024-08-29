@@ -25,16 +25,25 @@ public class TennisGame1 : ITennisGame
 
     public string GetScore()
     {
-        if (_player1Score == _player2Score)
-        {
-            return new DrawResult(_player1Score, _player2Score).GetScoreAsText();
-        }
+        return Arbiter.DeterminateResult(_player1Score, _player2Score).GetScoreAsText();
+    }
+}
 
-        if (_player1Score >= 4 || _player2Score >= 4)
+class Arbiter
+{
+    public static Result DeterminateResult(int player1Score, int player2Score)
+    {
+        if (player1Score == player2Score)
         {
-            return new AdvantageOrWinResult(_player1Score, _player2Score).GetScoreAsText();
+            return new DrawResult(player1Score, player2Score);
         }
-
-        return new OngoingResult(_player1Score, _player2Score).GetScoreAsText();
+        else if (player1Score >= 4 || player2Score >= 4)
+        {
+            return new AdvantageOrWinResult(player1Score, player2Score);
+        }
+        else
+        {
+            return new OngoingResult(player1Score, player2Score);
+        }
     }
 }

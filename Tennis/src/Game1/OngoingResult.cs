@@ -16,7 +16,7 @@ public class OngoingResult : Result
         return GetScoreAsString(Player1Score) + "-" + GetScoreAsString(Player2Score);
     }
 
-    private static string GetScoreAsString(int score)
+    public static string GetScoreAsString(int score)
     {
         switch (score)
         {
