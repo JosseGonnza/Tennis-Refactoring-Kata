@@ -1,4 +1,6 @@
-﻿namespace Tennis.src.Game1.SecondTry;
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace Tennis.src.Game1.SecondTry;
 
 public class TennisGame1Recap : ITennisGame
 {
@@ -32,63 +34,23 @@ public class TennisGame1Recap : ITennisGame
         {
             return DeterminateAdvantageOrWinResult();
         }
-        return ResultPerPoint(score);
+        return DeterminateOngoingResult(score);
     }
 
-    private string ResultPerPoint(string score)
+    private string DeterminateOngoingResult(string score)
     {
-        return GetScoreAsString(m_score1) + "-" + GetScoreAsString(m_score2);
+        return new OngoingResult(m_score1, m_score2).GetScoreAsText();
     }
 
-    private static string GetScoreAsString(int score)
-    {
-        switch (score)
-        {
-            case 0:
-                return "Love";
-            case 1:
-                return "Fifteen";
-            case 2:
-                return "Thirty";
-            case 3:
-                return "Forty";
-        }
-        return score.ToString();
-    }
 
     private string DeterminateAdvantageOrWinResult()
     {
-        string score;
-        var minusResult = m_score1 - m_score2;
-        if (minusResult == 1)
-        {
-            score = "Advantage player1";
-        }
-        else if (minusResult == -1)
-        {
-            score = "Advantage player2";
-        }
-        else if (minusResult >= 2)
-        {
-            score = "Win for player1";
-        }
-        else
-        {
-            score = "Win for player2";
-        }
-
-        return score;
+        return new AdvantageOrWinResult(m_score1, m_score2).GetScoreAsText();
     }
 
     private string DeterminateDrawResult()
     {
-        return m_score1 switch
-        {
-            0 => "Love-All",
-            1 => "Fifteen-All",
-            2 => "Thirty-All",
-            _ => "Deuce",
-        };
+        return new DrawResult(m_score1, m_score2).GetScoreAsText();
     }
 }
 
@@ -118,4 +80,74 @@ public class DrawResult : IResult
             _ => "Deuce",
         };
     }
+}
+
+public class AdvantageOrWinResult : IResult
+{
+    private int PlayerOneScore;
+    private int PlayerTwoScore;
+
+    public AdvantageOrWinResult(int playerOneScore, int playerTwoScore)
+    {
+        PlayerOneScore = playerOneScore;
+        PlayerTwoScore = playerTwoScore;
+    }
+
+    public string GetScoreAsText()
+    {
+        string score;
+        var minusResult = PlayerOneScore - PlayerTwoScore;
+        if (minusResult == 1)
+        {
+            score = "Advantage player1";
+        }
+        else if (minusResult == -1)
+        {
+            score = "Advantage player2";
+        }
+        else if (minusResult >= 2)
+        {
+            score = "Win for player1";
+        }
+        else
+        {
+            score = "Win for player2";
+        }
+
+        return score;
+    }
+}
+
+public class OngoingResult : IResult
+{
+    private int PlayerOneScore;
+    private int PlayerTwoScore;
+
+    public OngoingResult(int playerOneScore, int playerTwoScore)
+    {
+        PlayerOneScore = playerOneScore;
+        PlayerTwoScore = playerTwoScore;
+    }
+
+    public string GetScoreAsText()
+    {
+        return GetScoreAsString(PlayerOneScore) + "-" + GetScoreAsString(PlayerTwoScore);
+    }
+
+    private static string GetScoreAsString(int score)
+    {
+        switch (score)
+        {
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            case 3:
+                return "Forty";
+        }
+        return score.ToString();
+    }
+
 }
