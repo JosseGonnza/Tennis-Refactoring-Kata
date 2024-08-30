@@ -1,4 +1,6 @@
-﻿namespace Tennis.src.Game1.SecondTry.Models;
+﻿using System;
+
+namespace Tennis.src.Game1.SecondTry.Models;
 
 public class NewPlayer
 {
@@ -24,5 +26,10 @@ public class NewPlayer
     public bool IsTiedWith(NewPlayer otherPlayer)
     {
         return Score == otherPlayer.Score;
+    }
+
+    public bool IsAheadByOnePoint(NewPlayer otherPlayer)
+    {
+        return Math.Abs(Score - otherPlayer.Score) == 1;
     }
 }
