@@ -4,18 +4,18 @@ namespace Tennis.src.Game1.SecondTry.Results;
 
 public class DrawResultTwo : ResultTwo
 {
-    private int PlayerOneScore;
-    private int PlayerTwoScore;
+    private NewPlayer Player1;
+    private NewPlayer Player2;
 
-    public DrawResultTwo(int playerOneScore, int playerTwoScore)
+    public DrawResultTwo(NewPlayer player1, NewPlayer player2)
     {
-        PlayerOneScore = playerOneScore;
-        PlayerTwoScore = playerTwoScore;
+        Player1 = player1;
+        Player2 = player2;
     }
 
     public string GetScoreAsText()
     {
-        return PlayerOneScore switch
+        return Player1.GetScore() switch
         {
             0 => "Love-All",
             1 => "Fifteen-All",

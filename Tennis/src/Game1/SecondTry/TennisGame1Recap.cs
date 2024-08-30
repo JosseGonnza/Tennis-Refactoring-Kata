@@ -18,13 +18,9 @@ public class TennisGame1Recap : ITennisGame
     public void WonPoint(string playerName)
     {
         if (playerName.Equals("player1"))
-        {
             Player1.AddPoint();
-        }
         else
-        {
             Player2.AddPoint();
-        }
     }
 
     public string GetScore()

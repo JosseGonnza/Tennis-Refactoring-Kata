@@ -4,18 +4,18 @@ namespace Tennis.src.Game1.SecondTry.Results;
 
 public class OngoingResultTwo : ResultTwo
 {
-    private int PlayerOneScore;
-    private int PlayerTwoScore;
+    private NewPlayer Player1;
+    private NewPlayer Player2;
 
-    public OngoingResultTwo(int playerOneScore, int playerTwoScore)
+    public OngoingResultTwo(NewPlayer player1, NewPlayer player2)
     {
-        PlayerOneScore = playerOneScore;
-        PlayerTwoScore = playerTwoScore;
+        Player1 = player1;
+        Player2 = player2;
     }
 
     public string GetScoreAsText()
     {
-        return GetScoreAsString(PlayerOneScore) + "-" + GetScoreAsString(PlayerTwoScore);
+        return GetScoreAsString(Player1.GetScore()) + "-" + GetScoreAsString(Player2.GetScore());
     }
 
     private static string GetScoreAsString(int score)
