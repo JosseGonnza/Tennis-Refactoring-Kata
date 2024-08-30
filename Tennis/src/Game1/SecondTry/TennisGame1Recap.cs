@@ -26,43 +26,25 @@ public class TennisGame1Recap : ITennisGame
         string score = "";
         if (m_score1 == m_score2)
         {
-            score = DeterminateDrawResult();
+            return DeterminateDrawResult();
         }
-        else if (m_score1 >= 4 || m_score2 >= 4)
+        if (m_score1 >= 4 || m_score2 >= 4)
         {
-            score = DeterminateAdvantageOrWinResult();
+            return DeterminateAdvantageOrWinResult();
         }
-        else
-        {
-            score = DeterminateOngoingResult(score);
-        }
-        return score;
-    }
-
-    private string DeterminateOngoingResult(string score)
-    {
         return GetScoreAsString(score, m_score1) + "-" + GetScoreAsString(score, m_score2);
     }
 
     private static string GetScoreAsString(string score, int tempScore)
     {
-        switch (tempScore)
+        return tempScore switch
         {
-            case 0:
-                score += "Love";
-                break;
-            case 1:
-                score += "Fifteen";
-                break;
-            case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
-        }
-
-        return score;
+            0 => "Love",
+            1 => "Fifteen",
+            2 => "Thirty",
+            3 => "Forty",
+            _ => score,
+        };
     }
 
     private string DeterminateAdvantageOrWinResult()
