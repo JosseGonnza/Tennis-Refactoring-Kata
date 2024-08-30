@@ -28,28 +28,12 @@ public class TennisGame1Recap : ITennisGame
         string score = "";
         if (m_score1 == m_score2)
         {
-            return DeterminateDrawResult();
+            return new DrawResult(m_score1, m_score2).GetScoreAsText();
         }
         if (m_score1 >= 4 || m_score2 >= 4)
         {
-            return DeterminateAdvantageOrWinResult();
+            return new AdvantageOrWinResult(m_score1, m_score2).GetScoreAsText();
         }
-        return DeterminateOngoingResult(score);
-    }
-
-    private string DeterminateOngoingResult(string score)
-    {
         return new OngoingResult(m_score1, m_score2).GetScoreAsText();
-    }
-
-
-    private string DeterminateAdvantageOrWinResult()
-    {
-        return new AdvantageOrWinResult(m_score1, m_score2).GetScoreAsText();
-    }
-
-    private string DeterminateDrawResult()
-    {
-        return new DrawResult(m_score1, m_score2).GetScoreAsText();
     }
 }
