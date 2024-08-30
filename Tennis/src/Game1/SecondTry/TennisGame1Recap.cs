@@ -1,6 +1,6 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using Tennis.src.Game1.FirstTry.Models;
 
-namespace Tennis.src.Game1.SecondTry.Results;
+namespace Tennis.src.Game1.SecondTry;
 
 public class TennisGame1Recap : ITennisGame
 {
@@ -25,15 +25,6 @@ public class TennisGame1Recap : ITennisGame
 
     public string GetScore()
     {
-        string score = "";
-        if (m_score1 == m_score2)
-        {
-            return new DrawResult(m_score1, m_score2).GetScoreAsText();
-        }
-        if (m_score1 >= 4 || m_score2 >= 4)
-        {
-            return new AdvantageOrWinResult(m_score1, m_score2).GetScoreAsText();
-        }
-        return new OngoingResult(m_score1, m_score2).GetScoreAsText();
+        return ArbiterTwo.DeterminateResult(m_score1, m_score2).GetScoreAsText();
     }
 }

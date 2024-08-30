@@ -2,12 +2,12 @@
 
 namespace Tennis.src.Game1.SecondTry.Results;
 
-public class DrawResult : IResult
+public class DrawResultTwo : ResultTwo
 {
     private int PlayerOneScore;
     private int PlayerTwoScore;
 
-    public DrawResult(int playerOneScore, int playerTwoScore)
+    public DrawResultTwo(int playerOneScore, int playerTwoScore)
     {
         PlayerOneScore = playerOneScore;
         PlayerTwoScore = playerTwoScore;
