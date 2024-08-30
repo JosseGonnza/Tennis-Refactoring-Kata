@@ -7,7 +7,7 @@ class ArbiterTwo
 {
     public static ResultTwo DeterminateResult(NewPlayer player1, NewPlayer player2)
     {
-        if (player1.GetScore() == player2.GetScore())
+        if (player1.IsTiedWith(player2))
         {
             return new DrawResultTwo(player1.GetScore(), player2.GetScore());
         }

@@ -20,4 +20,9 @@ public class NewPlayer
     {
         Score++;
     }
+
+    public bool IsTiedWith(NewPlayer otherPlayer)
+    {
+        return Score == otherPlayer.Score;
+    }
 }
