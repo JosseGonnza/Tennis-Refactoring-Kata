@@ -92,4 +92,9 @@ public class TennisGame1Recap : ITennisGame
     }
 }
 
+public interface IResult
+{
+    public string GetScoreAsText();
+}
+
 
