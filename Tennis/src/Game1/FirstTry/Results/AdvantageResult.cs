@@ -1,6 +1,6 @@
-﻿using Tennis.src.Game1.Models;
+﻿using Tennis.src.Game1.FirstTry.Models;
 
-namespace Tennis.src.Game1.Results;
+namespace Tennis.src.Game1.FirstTry.Results;
 
 public class AdvantageResult : Result
 {

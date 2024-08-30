@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tennis.src.Game1.Models;
+namespace Tennis.src.Game1.FirstTry.Models;
 
 public class Player
 {

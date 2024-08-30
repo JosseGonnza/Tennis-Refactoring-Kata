@@ -1,4 +1,4 @@
-﻿namespace Tennis.src.Game1.Models;
+﻿namespace Tennis.src.Game1.FirstTry.Models;
 
 public interface Result
 {

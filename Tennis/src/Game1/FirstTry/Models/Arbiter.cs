@@ -1,6 +1,6 @@
-﻿using Tennis.src.Game1.Results;
+﻿using Tennis.src.Game1.FirstTry.Results;
 
-namespace Tennis.src.Game1.Models;
+namespace Tennis.src.Game1.FirstTry.Models;
 
 class Arbiter
 {

@@ -1,7 +1,7 @@
 using System;
-using Tennis.src.Game1.Models;
+using Tennis.src.Game1.FirstTry.Models;
 
-namespace Tennis.src.Game1;
+namespace Tennis.src.Game1.FirstTry;
 
 public class TennisGame1 : ITennisGame
 {

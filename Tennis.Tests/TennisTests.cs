@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Tennis.src.Game1;
+using Tennis.src.Game1.FirstTry;
+using Tennis.src.Game1.SecondTry;
 using Xunit;
 
 namespace Tennis.Tests
@@ -27,23 +28,23 @@ namespace Tennis.Tests
             new object[] {1, 2, "Fifteen-Thirty"},
             new object[] {1, 3, "Fifteen-Forty"},
             new object[] {1, 4, "Win for player2"},
-            
+
             new object[] {2, 2, "Thirty-All"},
             new object[] {3, 2, "Forty-Thirty"},
             new object[] {4, 2, "Win for player1"},
             new object[] {2, 3, "Thirty-Forty"},
             new object[] {2, 4, "Win for player2"},
-            
+
             new object[] {3, 3, "Deuce"},
             new object[] {4, 3, "Advantage player1"},
             new object[] {3, 4, "Advantage player2"},
-            
+
             new object[] {4, 4, "Deuce"},
             new object[] {5, 4, "Advantage player1"},
             new object[] {6, 4, "Win for player1"},
             new object[] {4, 5, "Advantage player2"},
             new object[] {4, 6, "Win for player2"},
-            
+
             new object[] {15, 14, "Advantage player1"},
             new object[] {16, 14, "Win for player1"},
             new object[] {14, 15, "Advantage player2"},
@@ -62,6 +63,14 @@ namespace Tennis.Tests
         public void Tennis1Test(int p1, int p2, string expected)
         {
             var game = new TennisGame1("player1", "player2");
+            CheckAllScores(game, p1, p2, expected);
+        }
+
+        [Theory]
+        [ClassData(typeof(TestDataGenerator))]
+        public void Tennis1RecapTest(int p1, int p2, string expected)
+        {
+            var game = new TennisGame1Recap("player1", "player2");
             CheckAllScores(game, p1, p2, expected);
         }
 
@@ -100,7 +109,7 @@ namespace Tennis.Tests
         {
             var game = new TennisGame6("player1", "player2");
             CheckAllScores(game, p1, p2, expected);
-        }        
+        }
         [Theory]
         [ClassData(typeof(TestDataGenerator))]
         public void Tennis7Test(int p1, int p2, string expected)
