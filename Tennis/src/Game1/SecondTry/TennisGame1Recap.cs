@@ -32,19 +32,28 @@ public class TennisGame1Recap : ITennisGame
         {
             return DeterminateAdvantageOrWinResult();
         }
-        return GetScoreAsString(score, m_score1) + "-" + GetScoreAsString(score, m_score2);
+        return ResultPerPoint(score);
     }
 
-    private static string GetScoreAsString(string score, int tempScore)
+    private string ResultPerPoint(string score)
     {
-        return tempScore switch
+        return GetScoreAsString(m_score1) + "-" + GetScoreAsString(m_score2);
+    }
+
+    private static string GetScoreAsString(int score)
+    {
+        switch (score)
         {
-            0 => "Love",
-            1 => "Fifteen",
-            2 => "Thirty",
-            3 => "Forty",
-            _ => score,
-        };
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            case 3:
+                return "Forty";
+        }
+        return score.ToString();
     }
 
     private string DeterminateAdvantageOrWinResult()
