@@ -70,8 +70,30 @@ public class TennisGame1Recap2 : ITennisGame
 
     private string DeterminateDrawResult()
     {
+        return new DrawResultThree(m_score1, m_score2).GetScoreAsText();
+    }
+}
+
+public interface ThreeResult
+{
+    public string GetScoreAsText();
+}
+
+public class DrawResultThree : ThreeResult
+{
+    private int Player1Score;
+    private int Player2Score;
+
+    public DrawResultThree(int player1Score, int player2Score)
+    {
+        Player1Score = player1Score;
+        Player2Score = player2Score;
+    }
+
+    public string GetScoreAsText()
+    {
         string score;
-        switch (m_score1)
+        switch (Player1Score)
         {
             case 0:
                 score = "Love-All";
@@ -85,9 +107,7 @@ public class TennisGame1Recap2 : ITennisGame
             default:
                 score = "Deuce";
                 break;
-
         }
-
         return score;
     }
 }
