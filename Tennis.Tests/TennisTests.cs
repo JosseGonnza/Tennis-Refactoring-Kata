@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tennis.Game1.ThirdTry;
 using Tennis.src.Game1.FirstTry;
 using Tennis.src.Game1.SecondTry;
-using Tennis.src.Game1.SecondTry.Results;
 using Xunit;
 
 namespace Tennis.Tests
@@ -72,6 +72,14 @@ namespace Tennis.Tests
         public void Tennis1RecapTest(int p1, int p2, string expected)
         {
             var game = new TennisGame1Recap("player1", "player2");
+            CheckAllScores(game, p1, p2, expected);
+        }
+        
+        [Theory]
+        [ClassData(typeof(TestDataGenerator))]
+        public void ThirdTennisGame1(int p1, int p2, string expected)
+        {
+            var game = new TennisGame1Recap2("player1", "player2");
             CheckAllScores(game, p1, p2, expected);
         }
 
