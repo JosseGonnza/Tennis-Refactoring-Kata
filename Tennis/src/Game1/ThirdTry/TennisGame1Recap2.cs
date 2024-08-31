@@ -59,13 +59,7 @@ public class TennisGame1Recap2 : ITennisGame
 
     private string DeterminateAdvantageOrWinResult()
     {
-        string score;
-        var minusResult = m_score1 - m_score2;
-        if (minusResult == 1) score = "Advantage player1";
-        else if (minusResult == -1) score = "Advantage player2";
-        else if (minusResult >= 2) score = "Win for player1";
-        else score = "Win for player2";
-        return score;
+        return new AdvantageOrWinResultThree(m_score1, m_score2).GetScoreAsText();
     }
 
     private string DeterminateDrawResult()
@@ -108,6 +102,29 @@ public class DrawResultThree : ThreeResult
                 score = "Deuce";
                 break;
         }
+        return score;
+    }
+}
+
+public class AdvantageOrWinResultThree : ThreeResult
+{
+    private int Player1Score;
+    private int Player2Score;
+
+    public AdvantageOrWinResultThree(int player1Score, int player2Score)
+    {
+        Player1Score = player1Score;
+        Player2Score = player2Score;
+    }
+
+    public string GetScoreAsText()
+    {
+        string score;
+        var minusResult = Player1Score - Player2Score;
+        if (minusResult == 1) score = "Advantage player1";
+        else if (minusResult == -1) score = "Advantage player2";
+        else if (minusResult >= 2) score = "Win for player1";
+        else score = "Win for player2";
         return score;
     }
 }
