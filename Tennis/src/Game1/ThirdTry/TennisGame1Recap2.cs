@@ -1,5 +1,3 @@
-using System;
-
 namespace Tennis.Game1.ThirdTry;
 
 public class TennisGame1Recap2 : ITennisGame
@@ -25,20 +23,6 @@ public class TennisGame1Recap2 : ITennisGame
 
     public string GetScore()
     {
-        string score = "";
-        if (m_score1 == m_score2)
-        {
-            return new DrawResultThree(m_score1, m_score2).GetScoreAsText();
-        }
-        if ((m_score1 >= 4 || m_score2 >= 4) && Math.Abs(m_score1 - m_score2) == 1)
-        {
-            return new AdvantageResultThree(m_score1, m_score2).GetScoreAsText();
-        }
-        if (m_score1 >= 4 || m_score2 >= 4)
-        {
-            return new WinResultThree(m_score1, m_score2).GetScoreAsText();
-        }
-
-        return new OnGoingResultThree(m_score1, m_score2).GetScoreAsText();
+        return ArbiterThree.DeterminateResult(m_score1, m_score2).GetScoreAsText();
     }
 }
