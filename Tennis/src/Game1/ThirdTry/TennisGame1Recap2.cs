@@ -2,27 +2,27 @@ namespace Tennis.Game1.ThirdTry;
 
 public class TennisGame1Recap2 : ITennisGame
 {
-    private int m_score1 = 0;
-    private int m_score2 = 0;
+    private NewPlayer2 Player1;
+    private NewPlayer2 Player2;
     private string player1Name;
     private string player2Name;
 
     public TennisGame1Recap2(string player1Name, string player2Name)
     {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+        Player1 = new NewPlayer2(player1Name);
+        Player2 = new NewPlayer2(player2Name);
     }
 
     public void WonPoint(string playerName)
     {
-        if (playerName == "player1")
-            m_score1 += 1;
+        if (playerName.Equals("player1"))
+            Player1.AddPoint();
         else
-            m_score2 += 1;
+            Player2.AddPoint();
     }
 
     public string GetScore()
     {
-        return ArbiterThree.DeterminateResult(m_score1, m_score2).GetScoreAsText();
+        return ArbiterThree.DeterminateResult(Player1.GetScore(), Player2.GetScore()).GetScoreAsText();
     }
 }
